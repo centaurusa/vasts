@@ -2,13 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const { check, validationResult } = require('express-validator/check');
-const db = require('./util/db');
 const vastRoutes = require('./routes/vast');
 
 const app = express();
-
-
 
 // parse application/x-www-form-urlencoded
 app.use(cors());

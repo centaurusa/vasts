@@ -5,7 +5,6 @@ exports.fetchVast = (req, res) => {
 };
 
 exports.createVast = (req, res) => {
-    console.log('creating vast');
     const { vastUrl, position, hideUI } = req.query;
     Vast.create({
         vast_url: vastUrl,
@@ -14,6 +13,10 @@ exports.createVast = (req, res) => {
     })
     .then(result => {
         console.log('result', result);
+        res.status(201).json({ message: 'vast created'});
     })
-    .catch(err => console.log('err'));
+    .catch(err => {
+        console.log('err', err);
+        res.status(403).json({ error: err });
+    });
 }

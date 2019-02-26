@@ -1,8 +1,14 @@
 const Sequelize = require('sequelize');
+const config = require('config');
 
-const sequelize = new Sequelize('vasts-project', 'root', 'zxasqw12', { 
+const { dbName, host, username, password } = config.get('dbConfig');
+
+const sequelize = new Sequelize(dbName, username, password, { 
     dialect: 'mysql', 
-    host: 'localhost'
+    host: host,
+    define: {
+        timestamps: false
+    }
 });
 
 module.exports = sequelize;
