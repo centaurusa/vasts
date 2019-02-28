@@ -9,7 +9,8 @@ import VastXML from '../components/vastXML';
 class Layout extends Component {
 
   render() {
-    const { handleCreateVast, createVastResult, error, isLoading, handleFetchVast, vast } = this.props;
+    const { handleCreateVast, createVastResult, errors, isLoading, handleFetchVast, vast } = this.props;
+    console.log('layout render', this.props);
     return (
       <Fragment>
         <Header title="Vasts"
@@ -20,7 +21,7 @@ class Layout extends Component {
         {vast && <VastXML key={vast} content={vast} />}
         {isLoading && <Loader key={isLoading}/>}
         {createVastResult && <Toast key={createVastResult.message} message={createVastResult.message} variant="success"/>}
-        {error && <Toast key={error[0].msg} message={error[0].msg} variant="error"/>}
+        {errors && <Toast key={errors[0].msg} message={errors[0].msg} variant="error"/>}
       </Fragment>
     )
   }
@@ -28,7 +29,7 @@ class Layout extends Component {
 
 const mapStateToProps = state => ({
   createVastResult: state.createVastResult,
-  error: state.error,
+  errors: state.errors,
   vast: state.vast,
   isLoading: state.isLoading
 });

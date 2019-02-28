@@ -11,7 +11,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 createVastResult: '',
-                error: '',
+                errors: '',
                 isLoading: true
             }
         case CREATE_VAST_SUCCESS:
@@ -24,7 +24,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload
+                errors: action.payload
             }
         case FETCH_VAST:
             return {
@@ -42,7 +42,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload,
+                errors: action.payload,
             }
         default:
             return state;

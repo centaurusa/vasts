@@ -5,9 +5,18 @@ exports.validate = method => {
     switch (method) {
         case 'createVast': {
             return [ 
-                query('vastURL').trim().exists().withMessage('vast url is required').isURL().withMessage('the url is invalid'),
-                query('position').optional().isString().isIn(VAST_POSITIONS),
-                query('hideUI').optional().isBoolean(),
+                query('vastURL')
+                    .trim()
+                    .not()
+                    .isEmpty().withMessage('vast url is required')
+                    .isURL().withMessage('the url is invalid'),
+                query('position')
+                    .optional()
+                    .isString()
+                    .isIn(VAST_POSITIONS),
+                query('hideUI')
+                    .optional()
+                    .isBoolean(),
             ]   
         }
     }
