@@ -74,6 +74,7 @@ class Header extends Component {
 Header.propTypes = {
   title: PropTypes.string,
   classes: PropTypes.object.isRequired,
+  handleFetchVast: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Header);

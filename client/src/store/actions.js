@@ -1,8 +1,10 @@
 import Axios from "axios";
 import { CREATE_VAST, CREATE_VAST_SUCCESS, CREATE_VAST_FAIL, FETCH_VAST, FETCH_VAST_SUCCESS, FETCH_VAST_FAIL } from './constants';
 
-
-
+/**
+ * @description sends data for creating new vast
+ * @param {Object} formValue 
+ */
 export const createVast = formValue => dispatch => {
     dispatch({
         type: CREATE_VAST
@@ -23,7 +25,10 @@ export const createVast = formValue => dispatch => {
           });
       });
   }
-
+/**
+ * @description fetches vast xml by id
+ * @param {Boolean} id 
+ */
 export const fetchVast = id => dispatch => {
     dispatch({
         type: FETCH_VAST

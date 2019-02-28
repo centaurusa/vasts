@@ -105,7 +105,6 @@ class Toast extends React.Component {
     if (reason === 'clickaway') {
       return;
     }
-
     this.setState({ open: false });
   };
 

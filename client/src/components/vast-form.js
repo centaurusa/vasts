@@ -81,12 +81,12 @@ class VastForm extends React.Component {
           </Select>
         </FormControl>
         <FormControlLabel control={
-                <Checkbox
+            <Checkbox
                 name="hideUI"
                 checked={hideUI}
                 onChange={(e) => this.handleChange(e, true)}
                 value="hideUI"
-                />
+              />
             }
           label="Hide UI" />
         <Button variant="contained" color="primary" fullWidth onClick={this.handleSubmit} >
