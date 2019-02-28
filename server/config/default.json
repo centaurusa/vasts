@@ -3,6 +3,10 @@
         "host": "localhost",
         "dbName": "vasts-project",
         "username": "root",
-        "password": "zxasqw12"
+        "password": "zxasqw12",
+        "dialect": "mysql"
+    },
+    "comboWrapper": {
+        "baseUrl": "http://localhost"
     }
 }

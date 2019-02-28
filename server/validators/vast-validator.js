@@ -1,28 +1,14 @@
 const { query } = require('express-validator/check');
-const VAST_POSITION = require('../enums/vast-position');
+const { VAST_POSITIONS } = require('../enums/vast-positions');
 
 exports.validate = method => {
     switch (method) {
         case 'createVast': {
             return [ 
-                query('vastUrl', 'vast url doesn\'t exist').exists().isURL(),
-                query('position', 'Invalid position').optional().isString().isIn(VAST_POSITION),
+                query('vastURL').trim().exists().withMessage('vast url is required').isURL().withMessage('the url is invalid'),
+                query('position').optional().isString().isIn(VAST_POSITIONS),
                 query('hideUI').optional().isBoolean(),
             ]   
         }
     }
 }
-
-exports.validationHandler = next => result => {
-    if (result.isEmpty()) return
-    if (!next)
-      throw new Error(
-        result.array().map(i => `'${i.param}' has ${i.msg}`).join(' ')
-      )
-  else
-    return next(
-      new Error(
-       result.array().map(i => `'${i.param}' has ${i.msg}`).join('')
-      )
-    )
-  }

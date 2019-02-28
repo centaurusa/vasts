@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../util/db');
-const { VAST_POSITION } = require('../enums/vast-position');
+const { VAST_POSITIONS } = require('../enums/vast-positions');
 
 const Vast = sequelize.define('vast', {
     id: {
@@ -11,10 +11,11 @@ const Vast = sequelize.define('vast', {
     },
     vast_url: {
         type: Sequelize.STRING(600),
-        allowNull: false
+        allowNull: false,
+        trim: true
     },
     position: {
-        type: Sequelize.ENUM(VAST_POSITION),
+        type: Sequelize.ENUM(VAST_POSITIONS),
         defaultValue: 'bottom_right'
     },
     hide_ui: {
